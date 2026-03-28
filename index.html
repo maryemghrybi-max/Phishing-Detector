@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Smart Phishing Detector</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="card">
+        <h1>Smart Phishing Detector</h1>
+        <form method="POST">
+            <input type="text" name="message" placeholder="Enter your message..." value="{{ message }}">
+            <button type="submit">Check</button>
+        </form>
+
+        {% if result %}
+        <div class="result {% if 'Phishing' in result %}phishing{% else %}safe{% endif %}">
+            {{ result }}
+            {% if confidence %}
+            <div style="margin-top:8px; font-size:16px; color:#333;">
+                Confidence: {{ confidence }}%
+            </div>
+            {% endif %}
+        </div>
+        {% endif %}
+
+        <div class="footer">💖 AI-powered detection</div>
+    </div>
+</body>
+</html>
